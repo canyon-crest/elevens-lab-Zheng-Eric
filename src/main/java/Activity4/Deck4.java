@@ -48,7 +48,7 @@ public class Deck4 {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		return size == 0;
+		return size() == 0;
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class Deck4 {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-		return size;
+		return cards.size();
 	}
 
 	/**
@@ -64,12 +64,11 @@ public class Deck4 {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		for(int i = cards.size()-1; i>=1; i++) {
-			int r = (int)(Math.random()*(i+1));
-			Collections.swap(cards,i,r);
-		}
-
+	   
+	    for (int i = cards.size() - 1; i > 0; i--) {
+	        int r = (int) (Math.random() * (i + 1)); 
+	        Collections.swap(cards, i, r);         
+	    }
 	}
 
 	/**
@@ -78,12 +77,8 @@ public class Deck4 {
 	 *         previously dealt.
 	 */
 	public Card4 deal() {
-		if (isEmpty()) {
-			return null;
-		}
-		size--;
-		Card4 c = cards.get(size);
-		return c;
+		if (isEmpty()) return null;
+	    return cards.remove(cards.size() - 1);
 	}
 
 	/**
